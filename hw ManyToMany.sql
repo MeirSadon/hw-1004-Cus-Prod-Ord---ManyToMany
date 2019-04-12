@@ -5,3 +5,6 @@ select name from (select name, max(noc) from (select c.name, count(o.CUSTOMER_ID
 select name from (select name, max(sop) from (SELECT c.name, sum(price) as sop from ORDERS o join Customer c  on c.id = o.CUSTOMER_ID join Products p on p.id=o.PRODUCT_ID GROUP by c.id))
 
 //מצא את הלקוחות שלא הזמינו כלל
+select name from (SELECT c.name, count(*) as counter from Customer c JOIN ORDERS o on c.id!=o.CUSTOMER_ID  GROUP by c.id having counter= (select count(*) from ORDERS))
+                                                                                                                                          
+                                                                                                                                          
